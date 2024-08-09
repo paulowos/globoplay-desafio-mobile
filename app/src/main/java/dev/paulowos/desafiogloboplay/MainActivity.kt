@@ -7,12 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import dev.paulowos.desafiogloboplay.ui.screen.HomeScreen
 import dev.paulowos.desafiogloboplay.ui.theme.DesafioGloboplayTheme
-import dev.paulowos.desafiogloboplay.util.Routes
+import dev.paulowos.desafiogloboplay.util.Routes.navGraph
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -25,14 +23,9 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(
                     navController = navController,
-                    startDestination = Routes.HOME_SCREEN,
+                    graph = navGraph(navController),
                     modifier = Modifier.safeContentPadding()
-                ) {
-                    composable(Routes.HOME_SCREEN) {
-                        HomeScreen(navController)
-                    }
-
-                }
+                )
             }
 
         }
